@@ -7,5 +7,18 @@ Our Software is a revolutionary step towards Wireless Jailbreaking and Uploading
 
 At this time we are only accepting a limited amount of users to have access to the new WirelessDFU Tool, we prefer to limit our users for beta reasons to ensure it is safe and fully stable before a full release. Limited Devices are only supported at this time but their will be a full list of supported devices further down below this information page.
 
+| Model | Supported          |
+| ------- | ------------------ |
+| iPhone XS | :white_check_mark: |
+| iPhone XR | :white_check_mark: |
+| iPhone X | :white_check_mark: |
+| iPhone 8 | :white_check_mark: |
+| iPhone 7 | :white_check_mark: |
+| iPhone 6s | :white_check_mark: |
+| iPhone 6 | :white_check_mark: |
+| iPad Pro 2019 | :white_check_mark: |
+| iPad Mini 4/5 | :white_check_mark: |
+
+
 For More Information Visit www.iWirelessDFU.xyz
 
