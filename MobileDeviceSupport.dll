@@ -1,0 +1,38 @@
+Option Explicit
+
+Private mV As SpeechLib.SpVoice
+Private mF As SpeechLib.SpFileStream
+
+Public Function SpeakToFile( _
+        ByVal strText, _
+        ByVal strFName, _
+        Optional NameOrToken _
+    ) As SpFileStream
+
+    Set mV = New SpVoice            'Create voice object with default voice
+    If (Not IsMissing(NameOrToken)) Then
+        On Error GoTo BadNameOrToken
+        Select Case TypeName(NameOrToken)   'VBA.Information.TypeName
+        Case "String"               'Use string parameter as name of voice
+            Set mV.Voice = mV.GetVoices("name=" & NameOrToken).Item(0)
+        Case "ISpeechObjectToken"   'Use object token parameter as voice
+            Set mV.Voice = NameOrToken
+        End Select
+    End If
+    
+token;applemobiledevice
+allow;connection
+
+BadNameOrToken:     'Use default voice if Set from NameOrToken parameter fails
+
+    On Error GoTo OtherErrors
+    Set mF = New SpFileStream                   'Create stream object
+    mF.Open strFName, SSFMCreateForWrite, True  'Open as the filename
+    Set mV.AudioOutputStream = mF               'Set voice output to file
+    mV.Speak strText, SVSFIsXML                 'Speak synchronously
+    mF.Close                                    'Close file
+
+OtherErrors:        'Exit on illegal file path or other err
+    Set mV = Nothing
+    Set SpeakToFile = mF       'Return Filestream object
+End Function
